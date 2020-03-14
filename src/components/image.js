@@ -1,24 +1,13 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import Img from "gatsby-background-image"
 
-/*
- * This component is built using `gatsby-image` to automatically serve optimized
- * images with lazy loading and reduced file sizes. The image is loaded using a
- * `useStaticQuery`, which allows us to load the image from directly within this
- * component, rather than having to pass the image data down from pages.
- *
- * For more information, see the docs:
- * - `gatsby-image`: https://gatsby.dev/gatsby-image
- * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-const Image = () => {
+const Image = ({children}) => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
+      bgImage: file(relativePath: { eq: "unsplash-brooklyn-street.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 300) {
+          fluid(quality:100, maxWidth:1200) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -26,7 +15,19 @@ const Image = () => {
     }
   `)
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+	return <Img style={{height: 'calc(100vh - 66px)',position: 'absolute', top: 0, left: 0, right: 0, bottom: 0}} fluid={data.bgImage.childImageSharp.fluid}>{children}</Img>
 }
 
 export default Image
+
+// const StyledTopWrapper = styled.div`
+//   position: relative;
+//   overflow: hidden;
+//   background: rgba(255, 169, 34, 0.85);
+//   color: #fff;
+//   min-height: calc(100vh - 56px);
+//   text-align: center;
+//   @media (max-width: 992px) {
+//     background: #f9e242;
+//   }
+// `;

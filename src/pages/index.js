@@ -1,21 +1,69 @@
 import React from "react"
-import { Link } from "gatsby"
-
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
-
-const IndexPage = () => (
+import styled from "styled-components";
+import SliceZone from '../components/sliceZone'
+import Image from '../components/image'
+export const query = graphql`
+{
+  prismic {
+    allHomepages {
+      edges {
+        node {
+          body {
+            ... on PRISMIC_HomepageBodyHero {
+              type
+              label
+              primary {
+                hero_content
+                hero_title
+              }
+						}
+						... on PRISMIC_HomepageBodyCall_to_action_grid {
+              type
+              primary {
+                section_title
+              }
+              fields {
+                button_destination {
+                  ... on PRISMIC_Page {
+                    page_title
+                    content
+                    _meta {
+                      uid
+                    }
+                  }
+                }
+                button_label
+                call_to_action_title
+                content
+                featured_image
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;
+const StyledTopWrapper = styled.div`
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 169, 34, 0.85);
+  color: #fff;
+  /* min-height: calc(100vh - 56px); */
+  text-align: center;
+  @media (max-width: 992px) {
+    background: #f9e242;
+  }
+`;
+const IndexPage = (props) => {
+console.log(props)
+	return (
   <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+ <SliceZone body={props.data.prismic.allHomepages.edges[0].node.body}/>
   </Layout>
-)
+)}
 
 export default IndexPage

@@ -1,10 +1,23 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `KVRE GatsbyPrismic Demo`,
+    description: `mock realty site.`,
+    author: `@magic8baller`,
   },
   plugins: [
+		`gatsby-plugin-styled-components`,
+		{
+			resolve: `gatsby-source-prismic-graphql`,
+			options: {
+				repositoryName: `kvre-demo`,
+				pages: [{
+					type: `Page`,
+					match: `/:uid`,
+					path: `/`,
+					component: require.resolve(`./src/templates/page.js`)
+				}]
+			}
+		},
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
