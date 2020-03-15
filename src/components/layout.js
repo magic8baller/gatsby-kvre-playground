@@ -30,8 +30,8 @@ const navQuery = graphql`
 `;
 
 const MainWrapper = styled.main`
-	/* margin: 0 auto; */
-	height: 1000px;
+	margin: 0 auto;
+	/* height: 1000px; */
 
 
 `;
@@ -66,6 +66,9 @@ const Branding = styled.div`
 	color:#456EDF;
 	font-weight: bold;
 	margin: auto 0;
+	a {
+		font-size: 20px;
+	}
 `;
 const renderLinks = (links) => links.map(link => (
 

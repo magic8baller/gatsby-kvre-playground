@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import styled from "styled-components";
 import SliceZone from '../components/sliceZone'
-import Image from '../components/image'
+
 export const query = graphql`
 {
   prismic {
@@ -16,7 +16,8 @@ export const query = graphql`
               label
               primary {
                 hero_content
-                hero_title
+								hero_title
+								background_image
               }
 						}
 						... on PRISMIC_HomepageBodyCall_to_action_grid {

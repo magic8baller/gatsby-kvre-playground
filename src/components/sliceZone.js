@@ -6,7 +6,7 @@ const SliceZone = ({body}) => {
 		<div>
 			{body.map((bodyContent, i) => {
 				if (bodyContent.type === 'hero' ) {
-					return (<Hero key={i} content={bodyContent.primary.hero_content} title={bodyContent.primary.hero_title} />)
+					return (<Hero key={i} content={bodyContent.primary.hero_content} title={bodyContent.primary.hero_title} backgroundImage={bodyContent.primary.background_image.url} />)
 					}else if (bodyContent.type === 'call_to_action_grid') {
 						return (<CallToActionGrid key={i} title={bodyContent.primary.section_title} callToActions={bodyContent.fields}/>)
 						} else {
