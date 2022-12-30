@@ -6,7 +6,7 @@
   "author": "@magic8baller",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
-    "gatsby": "^2.19.7",
+    "gatsby": "^2.32.13",
     "gatsby-background-image": "^0.10.2",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-manifest": "^2.2.39",
